@@ -69,7 +69,7 @@ Exams.Gui = class{
       <div class="float-right">
         <a class="btn btn-sm btn-secondary" href="/patients/${exam.patientId}/exams/${exam.id}">Show</a>
         <button class="btn btn-sm btn-secondary" type='button' data-exams='btn-edit'>Edit</button>
-        <a class="btn btn-sm btn-danger" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/patients/${exam.patientId}/exams/${exam.id}">Destroy</a>
+        <a class="btn btn-sm btn-danger" data-confirm="Are you sure?" rel="nofollow" data-method="delete" data-remote="true" href="/patients/${exam.patientId}/exams/${exam.id}">Destroy</a>
       </div>
     </td>`
     return html += `</tr>`

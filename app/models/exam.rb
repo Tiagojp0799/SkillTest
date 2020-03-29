@@ -1,4 +1,6 @@
 class Exam < ApplicationRecord
+  include Math
+
   belongs_to :patient
 
   belongs_to :point_po, class_name: "Point", :foreign_key => 'point_po_id', dependent: :destroy
@@ -12,6 +14,15 @@ class Exam < ApplicationRecord
   accepts_nested_attributes_for :point_a
 
   def maxillary_depth_angle
-    return nil if self.point_po.x.nil? or self.point_po.y.nil? or self.point_or.x.nil? or self.point_or.y.nil? or self.point_n.x.nil? or self.point_n.y.nil? or self.point_a.x.nil? or self.point_a.y.nil?
+    m1 = (point_po.y - point_or.y) / (point_po.x - point_or.x);
+    anglePoOr = atan(m1) * 180 / PI;
+
+    m2 = (point_n.y - point_a.y) / (point_n.x - point_a.x); 
+    angleNA = atan(m2) * 180 / PI;
+    
+    angle = (anglePoOr - angleNA)
+
+    return angle < 0 ? (angle + 180) : angle
   end
+
 end

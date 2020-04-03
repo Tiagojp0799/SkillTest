@@ -26,7 +26,7 @@
 </div>
 
 <div class="row">
-  <div class="col-md-12" data-view3d='wrapper'>
+  <div class="col-md-12" data-view3d='wrapper' data-exam="<%= @exam.to_json(include: [:point_po, :point_or, :point_n, :point_a])%>">
   </div>
 </div>
 
